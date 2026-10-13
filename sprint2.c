@@ -1,20 +1,21 @@
 #include <stdio.h>
 
-int main() {
-    int x;
+int main(void) {
+    int n;
     float temp;
 
-    printf("Introduza o valor do sensor: ");
+    printf("Introduza um valor entre 0 e 1023 (Pressione Enter para inserir): ");
 
-    scanf("%d", &x);
-
-    temp = 260.0 * x / 1023 - 20;
-
-    if (temp >= -10 && temp <= 190) {
-        printf("%.2f\n", temp);
+    if (scanf("%d", &n) != 1) {
+        printf("invalido\n");
     } else {
-        printf("Valor fora da gama\n");
-    }
+        temp = (260.0 * n / 1023) - 20;
 
+        if (temp < -10 || temp > 190) {
+            printf("Valor fora de gama\n");
+        } else {
+            printf("O valor da temperatura e %.2f °C\n", temp);
+        }
+    }
     return 0;
 }
